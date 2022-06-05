@@ -1,0 +1,56 @@
+<div class="cadastro">
+  <div class="form-cadastro">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>PROJETO ÁGUA</mat-card-title>
+            <mat-card-subtitle>Preencha os dados para cadastrar um novo usuário.</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="formCadastro">
+            <!-- NOME -->
+            <mat-form-field appearance="fill">
+              <mat-label> Nome</mat-label>
+              <input matInput  formControlName="nome">
+              <mat-error *ngIf="formCadastro.get('nome')?.invalid">{{getErrorMessage('nome')}}</mat-error>
+            </mat-form-field>
+
+            <!-- EMAIL -->
+            <mat-form-field appearance="fill">
+              <mat-label> Email</mat-label>
+              <input matInput placeholder="pat@example.com" formControlName="email">
+              <mat-error *ngIf="formCadastro.get('email')?.invalid">{{getErrorMessage('email')}}</mat-error>
+            </mat-form-field>
+
+            <!-- SENHA -->
+            <mat-form-field appearance="fill">
+              <mat-label>Senha</mat-label>
+              <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" required >
+              <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="formCadastro.get('password')?.invalid">{{getErrorMessage('password')}}</mat-error>
+            </mat-form-field>
+
+            <!-- CONFIRMA SENHA  -->
+            <mat-form-field appearance="fill">
+              <mat-label>Confirmar Senha</mat-label>
+              <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" required >
+              <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword " [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
+                <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="formCadastro.get('confirmPassword')?.invalid">{{getErrorMessage('confirmPassword')}}</mat-error>
+            </mat-form-field>
+          </form>
+
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button (click)="cadastrar()">Cadastrar</button>
+            <!-- <button mat-button (click)="logar()">Entrar</button> -->
+
+        </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+

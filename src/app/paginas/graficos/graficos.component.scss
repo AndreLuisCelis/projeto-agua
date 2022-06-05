@@ -1,0 +1,16 @@
+.graficos{
+  display: grid;
+  grid-template-areas:
+  'barra barra'
+  'volume volume-total';
+  @media (max-width:1200px) {
+    grid-template-areas:
+    'barra'
+    'volume'
+    'volume-total';
+  }
+}
+
+.graficos-barra { grid-area: barra;}
+.graficos-pie-volume { grid-area: volume;}
+.graficos-pie-volume-total { grid-area: volume-total;}

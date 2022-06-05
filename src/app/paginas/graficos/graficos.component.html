@@ -1,0 +1,30 @@
+<div class="graficos">
+  <div class="graficos-barra">
+    <app-chart-barra [data]="dados"></app-chart-barra>
+  </div>
+
+  <div class="graficos-pie-volume">
+    <app-chart-pie [data]="dados"
+    chartDiv="chart-pie-1"
+    title="Volume"
+    subTitle="Dados do volume e seus percentuais"
+    field="volume"
+    serieName="Volume">
+    </app-chart-pie>
+  </div>
+
+  <div class="graficos-pie-volume-total">
+    <app-chart-pie [data]="dados"
+     chartDiv="chart-pie-2"
+     title="Volume Total"
+     subTitle="Dados do volume total e seus percentuais"
+     field="volumeTotal"
+     serieName="Volume Total">
+    </app-chart-pie>
+
+  </div>
+
+
+
+
+</div>

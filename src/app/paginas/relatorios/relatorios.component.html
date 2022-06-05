@@ -1,0 +1,22 @@
+<div class="relatorios">
+    <mat-card *ngFor="let item of dados">
+        <mat-card-header>
+            <mat-card-title>{{item.local}}</mat-card-title>
+            <mat-card-subtitle>Fluxo: {{item.fluxo}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- DADOS COLOCADOS EM UMA TABELA PARA PODER EXPORTAR PARA EXECEL DE MANEIRA SIMPLES -->
+          <table #tabela>
+            <tr hidden><th>{{item.local}}</th></tr>
+            <tr hidden><td>Fluxo: {{item.fluxo}}</td></tr>
+            <tr><td><p>Dia: <span>{{item.diaHora}}</span></p></td></tr>
+            <tr><td><p>Volume: <span>{{item.volume}}</span></p></td></tr>
+            <tr><td><p>Criado em: <span>{{item.createdAt | date : 'dd/MM/yyyy'}}</span></p><td></tr>
+            <tr><td><p>Atualizado em: <span>{{item.updatedAt | date : 'dd/MM/yyyy'}}</span></p><td></tr>
+          </table>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="exportToExcel( tabela)">exportar</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

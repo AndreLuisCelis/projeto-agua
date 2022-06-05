@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'projeto-agua';
+  title = 'Projeto Água';
+  usuarioEstaLogado = this.appService.verificarUsuarioEstaLogado();;
+
+  constructor(
+     private router:Router,
+     private appService: AppService
+     ){}
+
+  ngOnInit() {
+    console.log(this.usuarioEstaLogado)
+    if (!this.usuarioEstaLogado) {
+      console.log('Não')
+      this.router.navigate(['/','login'])
+    }
+  }
+
 }

@@ -1,0 +1,23 @@
+.login {
+  background-image: url('https://img.freepik.com/free-vector/hand-painted-watercolor-abstract-watercolor-background_23-2149009911.jpg?t=st=1654135768~exp=1654136368~hmac=40f141337bd8a4d50c46345589d6160a9176cbc56830008f33627c0a5c0cd02f&w=740');
+  background-size: 2040px;
+  .form {
+    &-login{
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      mat-card {
+        min-width: 360px;
+        mat-card-header{
+          text-align: center;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+    }
+  }
+}
