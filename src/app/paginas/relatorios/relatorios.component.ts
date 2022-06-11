@@ -24,7 +24,7 @@ export class RelatoriosComponent implements OnInit {
   exportToExcel(tabela:Element) {
     let htmltable = document.querySelector('.relatorios')as Element;
     let html = tabela.outerHTML;
-    window.open('data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, ' + encodeURIComponent(html));
+    window.open('data:application/excel, ' + encodeURIComponent(html));
 }
 
 }
