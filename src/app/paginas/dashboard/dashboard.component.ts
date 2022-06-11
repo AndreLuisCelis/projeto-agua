@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../authentication.service';
 import { AppService } from '../../app.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -19,15 +20,15 @@ export class DashboardComponent {
       shareReplay()
     );
 
-    waterUse = [];
+    userName='';
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private service: AppService) {}
+    private authenticationService: AuthenticationService) {}
 
 ngOnInit() {
-
+  let currentUser = this.authenticationService.getCurrentUser();
+  this.userName = currentUser.user.name;
 }
-
 
 }
