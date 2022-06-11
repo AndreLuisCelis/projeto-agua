@@ -17,7 +17,7 @@
       <span class="user-logged">
         <button mat-button [matMenuTriggerFor]="menu">{{userName}}</button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item >Sair</button>
+          <button mat-menu-item (click) = "sair()">Sair</button>
         </mat-menu>
       </span>
     </mat-toolbar>

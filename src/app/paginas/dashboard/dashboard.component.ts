@@ -31,4 +31,9 @@ ngOnInit() {
   this.userName = currentUser.user.name;
 }
 
+sair(){
+  this.authenticationService.logout();
+}
+
+
 }
