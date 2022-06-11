@@ -1,3 +1,4 @@
+import { JwtHelperService } from "@auth0/angular-jwt";
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -19,8 +20,15 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const currentUser = this.authenticationService?.currentUserValue;
-    const isLoggedIn = currentUser && currentUser.token;
+    let isLoggedIn = currentUser && currentUser.token;
+    const helper = new JwtHelperService();
     const isApiUrl = request.url.startsWith(environment.apiUrl);
+
+    // VERIFICA SE O TOKEN EXPIROU
+    if(helper.isTokenExpired(currentUser?.token)){
+      this.authenticationService.logout();
+      isLoggedIn = false;
+    }
     if (isLoggedIn && isApiUrl) {
       request = request.clone({
         setHeaders: {
