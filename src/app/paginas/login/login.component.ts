@@ -27,21 +27,16 @@ export class LoginComponent implements OnInit {
 
   logar(){
     if(this.email.valid && this.password.valid) {
+      let config : MatSnackBarConfig = new MatSnackBarConfig();
+        config.duration=3000;
       this.authenticationService.login(this.email.value, this.password.value).
       subscribe( res => {
-        console.log(res)
         this.appService.usuarioEstaLogado = true;
-        let config : MatSnackBarConfig = new MatSnackBarConfig();
-        config.duration=3000;
         this.snackBar.open( ` Bem vindo ${res.user.name}` , 'OK',config);
-        console.log('token',this.authenticationService.getToken());
         this.router.navigate(['/'])
       } ,
-      err => console.log('erro', err));
-
+      err => this.snackBar.open( `Usuário ou senha invalidos` , 'error',config))
       return;
-      this.appService.usuarioEstaLogado = true;
-      this.router.navigate(['/'])
     } else {
       this.email.markAsTouched();
       this.password.markAllAsTouched();
