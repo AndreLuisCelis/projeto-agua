@@ -32,6 +32,10 @@ export class AuthenticationService {
       }));
   }
 
+  cadastrar(newUser:any){
+    return this.http.put(`${environment.apiUrl}/auth/signup`,newUser)
+  }
+
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');

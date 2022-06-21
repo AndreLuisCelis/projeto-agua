@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,7 +12,7 @@ import { AppService } from '../../app.service';
 })
 export class CadastroComponent implements OnInit {
   formCadastro = this.formBuild.group({
-    nome:['',[Validators.required]],
+    name:['',[Validators.required,Validators.minLength(6)]],
     email:['',[Validators.required,Validators.email]],
     password:['',Validators.required],
     confirmPassword:['',Validators.required]
@@ -21,7 +22,7 @@ export class CadastroComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private appService: AppService,
+    private authService: AuthenticationService,
     private formBuild: FormBuilder,
     private snackBar: MatSnackBar
   ) { }
@@ -33,14 +34,22 @@ export class CadastroComponent implements OnInit {
     this.verificarSenhaSaoIguais();
     this.markAllControlTouched();
     if(this.formCadastro.valid){
-      this.snackBar.open(
-        `Usuário ${this.formCadastro.get('nome')?.value} cadastrado com sucesso`,
-         'OK',
-         {duration:3000, verticalPosition:'top',horizontalPosition:'right'}
-         );
-      setTimeout(() => {
-        this.router.navigate(['/','login'])
-      }, 2000);
+      this.authService.cadastrar(this.formCadastro.value).subscribe( (res:any) => {
+        this.snackBar.open(
+          `Usuario ${res.user.name} Cadastrado  com sucesso`,
+           'OK',
+           {duration:3000, verticalPosition:'top',horizontalPosition:'left'}
+           );
+      }, (err:any)=>{
+        console.log(err);
+        this.snackBar.open(
+          ` ${err.error.data[0].msg}`,
+           'Error',
+           {duration:3000, verticalPosition:'top',horizontalPosition:'left'}
+           );
+      })
+
+
     }
   }
 
@@ -55,7 +64,7 @@ export class CadastroComponent implements OnInit {
   }
 
   markAllControlTouched(){
-    this.formCadastro.get('nome')?.markAllAsTouched();
+    this.formCadastro.get('name')?.markAllAsTouched();
     this.formCadastro.get('email')?.markAllAsTouched();
     this.formCadastro.get('password')?.markAllAsTouched();
     this.formCadastro.get('confirmPassword')?.markAllAsTouched();
@@ -68,9 +77,13 @@ export class CadastroComponent implements OnInit {
       return this.formCadastro.get('email')?.hasError('email') ? 'Não é um email valido' : '';
     }
 
-    if (campo == 'nome') {
-      if (this.formCadastro.get('nome')?.hasError('required')) {
+    if (campo == 'name') {
+      if (this.formCadastro.get('name')?.hasError('required')) {
         return 'Nome é obrigatório.'
+      }
+
+      if (this.formCadastro.get('name')?.hasError('minlength')) {
+        return 'Nome precisa ter no mínimo 6 caracters.'
       }
     }
 
