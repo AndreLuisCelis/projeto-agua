@@ -26,10 +26,12 @@
 
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-button (click)="cadastrar()">Cadastrar</button>
-            <button mat-button (click)="logar()">Entrar</button>
-
+            <button mat-raised-button color="primary"(click)="logar()">Entrar</button>
         </mat-card-actions>
+        <mat-card-content align="center" style="border-top:1px solid #ccc;padding-top: 15px;">
+          <button mat-stroked-button color="primary" (click)="cadastrar()">Cadastrar Novo Usuário</button>
+        </mat-card-content>
+
     </mat-card>
   </div>
 </div>

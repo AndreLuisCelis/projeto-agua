@@ -21,10 +21,15 @@ export class RelatoriosComponent implements OnInit {
     })
   }
 
-  exportToExcel(tabela:Element) {
-    let htmltable = document.querySelector('.relatorios')as Element;
-    let html = tabela.outerHTML;
-    window.open('data:application/excel, ' + encodeURIComponent(html));
+exportarExcel(tabela:Element , local:string){
+  var a = document.createElement('a');
+  var data_type = 'data:application/vnd.ms-excel';
+  var table_div = tabela
+  var table_html = table_div.outerHTML.replace(/ /g, '%20');
+  let filename =  local.replace(/ /g,'-');
+  a.href = data_type + ', ' + table_html;
+  a.download = `${filename}.xls`;
+  a.click();
 }
 
 }
