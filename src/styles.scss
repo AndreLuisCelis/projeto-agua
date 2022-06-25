@@ -2,3 +2,18 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media print {
+
+  app-root app-relatorios {
+    .relatorios {
+      mat-card {
+
+          width: 100%;
+          button {
+            display: none;
+          }
+    }
+   }
+  }
+}

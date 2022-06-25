@@ -20,7 +20,8 @@ const routes: Routes = [
     ]},
 
   {path:'login', component: LoginComponent},
-  {path:'cadastrar', component: CadastroComponent}
+  {path:'cadastrar', component: CadastroComponent},
+  {path:'relatorios', component:RelatoriosComponent}
 ];
 
 @NgModule({

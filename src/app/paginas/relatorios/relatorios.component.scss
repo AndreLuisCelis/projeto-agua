@@ -1,6 +1,26 @@
+.export-pdf {
+  width: 100%;
+  text-align: right;
+  z-index: 1000;
+  position: sticky;
+  top: 58px;
+  right: 10px;
+  button {
+    margin-right: 30px;
+    i {
+      font-size: 1.2rem;
+      margin-left: 5px;
+      color: rgba( #ac1f06, 0.9);
+    }
+  }
+
+}
+
 .relatorios {
   display: flex;
+  position: relative;
   flex-wrap: wrap;
+  }
   mat-card {
     margin: 10px;
     max-width: 350px;
@@ -15,9 +35,26 @@
         color: #555;
       }
     }
+    i {
+      margin-left: 5px;
+      color: green;
+    }
     mat-card-actions {
       text-align: right;
     }
 
+  }
+
+
+@media print {
+  .relatorios {
+
+    mat-card{
+      max-width: 2000pt;
+      width: 2000pt;
+    }
+    button {
+      display: none;
+    }
   }
 }

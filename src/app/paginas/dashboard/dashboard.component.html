@@ -3,9 +3,15 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar><img src="assets/economize-agua.png" width="50"></mat-toolbar>
     <mat-nav-list>
-      <a id="inicial" #inicial mat-list-item [routerLink]="['graficos']" [routerLinkActive]="'is-active'">Graficos</a>
-      <a mat-list-item [routerLink]="['relatorios']" [routerLinkActive]="'is-active'">Relatórios</a>
-      <a mat-list-item [routerLink]="['sobre']" [routerLinkActive]="'is-active'">Sobre</a>
+      <a id="inicial" #inicial mat-list-item [routerLink]="['graficos']" [routerLinkActive]="'is-active'">
+        Graficos
+      </a>
+      <a mat-list-item [routerLink]="['relatorios']" [routerLinkActive]="'is-active'">
+        Relatórios
+      </a>
+      <a mat-list-item [routerLink]="['sobre']" [routerLinkActive]="'is-active'">
+        Sobre
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -15,7 +21,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span class="user-logged">
-        <button mat-button [matMenuTriggerFor]="menu">{{userName}}</button>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa-regular fa-circle-user"></i>{{userName}}</button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click) = "sair()">Sair</button>
         </mat-menu>

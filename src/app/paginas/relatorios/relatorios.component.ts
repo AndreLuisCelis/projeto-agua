@@ -21,6 +21,27 @@ export class RelatoriosComponent implements OnInit {
     })
   }
 
+  exportarPdf(pdf:Element){
+    let collection = document.getElementsByTagName('head');
+  let head = collection[0].cloneNode(true);
+  var printWindow1 = window.open('', '', 'height=400,width=800') as Window ;
+  printWindow1?.document.write('<html id = "html"> <body id = "body">');
+  let html = printWindow1?.document.getElementById('html');
+  let body = printWindow1?.document.getElementById('body');
+  body?.append(pdf.cloneNode(true));
+  html?.append(head);
+  html?.appendChild(body as Element);
+  setTimeout(() => {
+    printWindow1?.print();
+  }, 200);
+  printWindow1.onfocus = function(){
+    setTimeout(() => {
+      printWindow1.close();
+    }, 200);
+  }
+
+  }
+
 exportarExcel(tabela:Element , local:string){
   var a = document.createElement('a');
   var data_type = 'data:application/vnd.ms-excel';

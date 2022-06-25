@@ -1,4 +1,9 @@
-<div class="relatorios">
+
+<div class="export-pdf">
+  <button (click)="exportarPdf(pdf)"
+   mat-raised-button >Exportar <i class="fa-solid fa-file-pdf"></i></button>
+</div>
+<div  class="relatorios" #pdf>
     <mat-card *ngFor="let item of dados">
         <mat-card-header>
             <mat-card-title>{{item.local}}</mat-card-title>
@@ -6,7 +11,7 @@
         </mat-card-header>
         <mat-card-content>
           <!-- DADOS COLOCADOS EM UMA TABELA PARA PODER EXPORTAR PARA EXECEL DE MANEIRA SIMPLES -->
-          <table #tabela>
+          <table #tabela >
             <tr hidden><th>{{item.local}}</th></tr>
             <tr hidden><td>Fluxo: {{item.fluxo}}</td></tr>
             <tr><td><p>Dia: <span>{{item.diaHora}}</span></p></td></tr>
@@ -16,7 +21,8 @@
           </table>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-stroked-button color="primary" (click)="exportarExcel( tabela , item.local)">exportar</button>
+          <button mat-stroked-button color="primary" (click)="exportarExcel( tabela , item.local)">
+            exportar <i class="fa-solid fa-file-excel"></i></button>
         </mat-card-actions>
     </mat-card>
 </div>
