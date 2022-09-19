@@ -20,7 +20,7 @@ export class AppComponent {
     console.log(this.usuarioEstaLogado)
     if (!this.usuarioEstaLogado) {
       console.log('Não')
-      this.router.navigate(['/','login'])
+      // this.router.navigate(['/','login'])
     }
   }
 
