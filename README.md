@@ -1,5 +1,28 @@
 # ProjetoAgua
 
+ <h4>APLICAÇÃO WEB PARA VERIFICAR E CONTROLAR O CONSUMO DE ÁGUA DE UMA RESIDÊNCIA UTILIZANDO IOT</h4>
+    <h5>Ana Paula Celis, 2002308</h5>
+    <h5>Andre Luis Celis, 1813329</h5>
+    <h5>Eduardo Soares Rosa, 2000575</h5>
+    <h5>Everton Cabral da Silva, 2008230</h5>
+    <h5>Giovanna Pereira Santos, 2002428</h5>
+    <h5>Otavio Henrique Lopes da Silva, 2006233</h5>
+    <h5>Samuel Luís dos Santos, 1807466</h5>
+
+## Deploy da Aplicação :dash:
+> Link do deploy da aplicação: https://projeto-agua.netlify.app/
+
+
+
+## Tecnologias
+
+
+- __Angular 12__ 
+- __Angular Material 12__  
+- __Scss__  
+- __HTML__ 
+- __Typesript__ 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
 
 ## Development server
